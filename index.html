@@ -515,17 +515,7 @@
                             <h2 class="text-sm font-bold text-slate-700 dark:text-white uppercase tracking-wider">Inventory Catalog Master</h2>
                             <div class="flex items-center space-x-2">
                                 <select id="inv-filter-category" onchange="loadInventoryTable()" class="bg-slate-100 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg px-2.5 py-1.5 text-xs text-slate-700 dark:text-slate-200 outline-none">
-                                    <option value="">All Categories</option>
-                                    <option value="Plumbing">Plumbing</option>
-                                    <option value="Electrical">Electrical</option>
-                                    <option value="Paints">Paints</option>
-                                    <option value="Tools">Tools</option>
-                                    <option value="Fasteners">Fasteners</option>
-                                    <option value="Pipes">Pipes</option>
-                                    <option value="Cement">Cement</option>
-                                    <option value="Steel">Steel</option>
-                                    <option value="Agricultural Hardware">Agricultural Hardware</option>
-                                    <option value="Safety Equipment">Safety Equipment</option>
+                                    <!-- Dynamically filled categories -->
                                 </select>
                                 <button onclick="clearInventoryFilters()" class="text-xs text-slate-500 hover:underline">Clear</button>
                             </div>
@@ -560,7 +550,7 @@
                                         <th class="p-4">HSN Code</th>
                                         <th class="p-4">GST</th>
                                         <th class="p-4">Purchase (₹)</th>
-                                        <th class="p-4">S. Price (₹)</th>
+                                        <th class="p-4 font-semibold">S. Price (₹)</th>
                                         <th class="p-4 text-center">In Stock</th>
                                         <th class="p-4 text-center">Unit</th>
                                         <th class="p-4 text-right">Actions</th>
@@ -666,7 +656,7 @@
                     <!-- Dynamic Reports Ledger Logo Header Card -->
                     <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                         <div class="flex items-center space-x-4">
-                            <div id="rep-logo-container" class="w-14 h-14 bg-indigo-50 dark:bg-slate-700 rounded-lg flex items-center justify-center overflow-hidden border border-slate-200 dark:border-slate-650 flex-shrink-0">
+                            <div id="rep-logo-container" class="w-14 h-14 bg-indigo-50 dark:bg-slate-700 rounded-lg flex items-center justify-center overflow-hidden border border-slate-200 dark:border-slate-350 flex-shrink-0">
                                 <img id="rep-logo-img" src="" class="hidden w-full h-full object-contain">
                                 <i id="rep-logo-fallback" class="fa-solid fa-file-contract text-2xl text-indigo-600 dark:text-indigo-400"></i>
                             </div>
@@ -712,11 +702,11 @@
                         </div>
                         <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
                             <p class="text-xs font-semibold text-slate-400 uppercase">Calculated CGST</p>
-                            <h3 class="text-xl font-extrabold text-slate-800 dark:text-white mt-1 text-slate-600" id="report-period-cgst">₹0.00</h3>
+                            <h3 class="text-xl font-extrabold text-slate-850 dark:text-white mt-1 text-slate-600" id="report-period-cgst">₹0.00</h3>
                         </div>
                         <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
                             <p class="text-xs font-semibold text-slate-400 uppercase">Calculated SGST</p>
-                            <h3 class="text-xl font-extrabold text-slate-800 dark:text-white mt-1 text-slate-600" id="report-period-sgst">₹0.00</h3>
+                            <h3 class="text-xl font-extrabold text-slate-850 dark:text-white mt-1 text-slate-600" id="report-period-sgst">₹0.00</h3>
                         </div>
                         <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
                             <p class="text-xs font-semibold text-slate-400 uppercase">Net Calculated Profit</p>
@@ -761,8 +751,8 @@
                             </h3>
                             <div class="space-y-4 text-xs">
                                 <!-- Logo Selection Section -->
-                                <div class="bg-slate-50 dark:bg-slate-750 p-4 rounded-xl border border-slate-200 dark:border-slate-650 flex flex-col sm:flex-row items-center gap-4">
-                                    <div class="relative w-20 h-20 bg-slate-200 dark:bg-slate-700 rounded-lg flex items-center justify-center overflow-hidden border border-slate-300 dark:border-slate-650">
+                                <div class="bg-slate-50 dark:bg-slate-750 p-4 rounded-xl border border-slate-200 dark:border-slate-350 flex flex-col sm:flex-row items-center gap-4">
+                                    <div class="relative w-20 h-20 bg-slate-200 dark:bg-slate-700 rounded-lg flex items-center justify-center overflow-hidden border border-slate-300 dark:border-slate-350">
                                         <img id="set-logo-preview" src="" alt="Shop Logo" class="hidden w-full h-full object-contain">
                                         <div id="set-logo-placeholder" class="text-slate-400 dark:text-slate-500 text-center flex flex-col items-center">
                                             <i class="fa-solid fa-image text-xl mb-1"></i>
@@ -791,21 +781,21 @@
                                 <div class="grid grid-cols-2 gap-3">
                                     <div>
                                         <label class="block font-bold text-slate-500 mb-1">Company GSTIN No.</label>
-                                        <input type="text" id="set-shop-gstin" value="27AAEFD5849M1Z9" class="w-full p-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg outline-none text-slate-750 dark:text-white">
+                                        <input type="text" id="set-shop-gstin" value="27AAEFD5849M1Z9" class="w-full p-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg outline-none text-slate-755 dark:text-white">
                                     </div>
                                     <div>
                                         <label class="block font-bold text-slate-500 mb-1">Contact Mobile</label>
-                                        <input type="text" id="set-shop-phone" value="+91 98765 43210" class="w-full p-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg outline-none text-slate-750 dark:text-white">
+                                        <input type="text" id="set-shop-phone" value="+91 98765 43210" class="w-full p-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg outline-none text-slate-755 dark:text-white">
                                     </div>
                                 </div>
                                 <div class="grid grid-cols-2 gap-3">
                                     <div>
                                         <label class="block font-bold text-slate-500 mb-1">UPI VPA (for QR Gen)</label>
-                                        <input type="text" id="set-shop-upi" value="dhislehardware@okaxis" class="w-full p-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg outline-none text-slate-750 dark:text-white">
+                                        <input type="text" id="set-shop-upi" value="dhislehardware@okaxis" class="w-full p-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg outline-none text-slate-755 dark:text-white">
                                     </div>
                                     <div>
                                         <label class="block font-bold text-slate-500 mb-1">Bank Account Info</label>
-                                        <input type="text" id="set-shop-bank" value="Axis Bank, A/c: 918010048593821, IFSC: UTIB0001827" class="w-full p-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg outline-none text-slate-750 dark:text-white">
+                                        <input type="text" id="set-shop-bank" value="Axis Bank, A/c: 918010048593821, IFSC: UTIB0001827" class="w-full p-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg outline-none text-slate-755 dark:text-white">
                                     </div>
                                 </div>
                                 <button onclick="saveStoreSettings()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-4 py-2 rounded-lg transition shadow">
@@ -831,7 +821,7 @@
                             <div class="space-y-3.5 text-xs">
                                 <div class="flex items-center justify-between p-3 bg-indigo-50/50 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900 rounded-lg">
                                     <div>
-                                        <p class="font-bold text-slate-750 dark:text-white">Cloud Auto-Sync</p>
+                                        <p class="font-bold text-slate-755 dark:text-white">Cloud Auto-Sync</p>
                                         <p class="text-[10px] text-slate-400">Har save aur click ke baad database automatic save & sync karein.</p>
                                     </div>
                                     <button onclick="toggleCloudSyncFlag()" id="btn-cloud-sync-toggle" class="w-12 h-6 bg-slate-300 dark:bg-slate-600 rounded-full flex items-center p-1 transition-colors duration-300">
@@ -840,7 +830,7 @@
                                 </div>
                                 <div>
                                     <label class="block font-bold text-slate-500 mb-1">Google Apps Script Web App URL</label>
-                                    <input type="url" id="set-cloud-url" placeholder="https://script.google.com/macros/s/.../exec" class="w-full p-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg outline-none text-slate-750 dark:text-white">
+                                    <input type="url" id="set-cloud-url" placeholder="https://script.google.com/macros/s/.../exec" class="w-full p-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg outline-none text-slate-755 dark:text-white">
                                 </div>
                                 <div class="grid grid-cols-2 gap-3">
                                     <button onclick="pushToCloud(true)" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold p-3 rounded-lg flex items-center justify-center space-x-1.5 transition shadow">
@@ -882,18 +872,18 @@ function doGet(e) {
 
                     </div>
 
-                    <!-- Local Storage Backups card underneath -->
+                    <!-- Local Storage Backups card -->
                     <div class="grid grid-cols-1 gap-6 mt-6">
                         <div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
                             <h3 class="text-sm font-bold text-slate-700 dark:text-white uppercase tracking-wider border-b border-slate-100 dark:border-slate-700 pb-3">
                                 Local Database Backups
                             </h3>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                                <button onclick="exportJSONBackup()" class="bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-700 dark:text-white font-bold p-3 rounded-lg transition border border-slate-200 dark:border-slate-650 flex flex-col items-center justify-center space-y-1">
+                                <button onclick="exportJSONBackup()" class="bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-755 dark:text-white font-bold p-3 rounded-lg transition border border-slate-200 dark:border-slate-350 flex flex-col items-center justify-center space-y-1">
                                     <i class="fa-solid fa-download text-lg text-indigo-500"></i>
                                     <span>Download Database (JSON)</span>
                                 </button>
-                                <label class="bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-650 text-slate-700 dark:text-white font-bold p-3 rounded-lg transition border border-slate-200 dark:border-slate-650 flex flex-col items-center justify-center space-y-1 cursor-pointer">
+                                <label class="bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-655 text-slate-755 dark:text-white font-bold p-3 rounded-lg transition border border-slate-200 dark:border-slate-355 flex flex-col items-center justify-center space-y-1 cursor-pointer">
                                     <i class="fa-solid fa-upload text-lg text-emerald-500"></i>
                                     <span>Restore Database (JSON)</span>
                                     <input type="file" id="import-json-file" class="hidden" onchange="importJSONBackup(event)">
@@ -916,7 +906,7 @@ function doGet(e) {
         </main>
     </div>
 
-    <!-- INVOICE PRINT & PDF RENDER TEMPLATE MODAL (A4 GST Standard Format + Thermal roll) -->
+    <!-- INVOICE PRINT & PDF RENDER TEMPLATE MODAL -->
     <div id="invoice-modal" class="fixed inset-0 bg-black/60 z-50 overflow-y-auto hidden flex items-center justify-center p-4">
         <div class="bg-white dark:bg-slate-800 rounded-xl shadow-2xl max-w-4xl w-full p-6 space-y-6 no-print">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-slate-200 dark:border-slate-700 pb-3">
@@ -959,7 +949,6 @@ function doGet(e) {
                     <!-- Shop Header -->
                     <div class="flex justify-between items-start border-b-2 border-slate-800 pb-4">
                         <div class="space-y-1">
-                            <!-- Custom Shop Logo (A4) -->
                             <div class="mb-3" id="pr-shop-logo-container">
                                 <img id="pr-shop-logo" src="" alt="Dhisle Logo" class="max-h-16 max-w-[150px] object-contain">
                             </div>
@@ -1000,11 +989,11 @@ function doGet(e) {
                             <tr class="bg-slate-100 text-slate-700 border-b border-slate-300">
                                 <th class="p-2 border-r border-slate-300">#</th>
                                 <th class="p-2 border-r border-slate-300">Product Particulars</th>
-                                <th class="p-2 border-r border-slate-300">HSN Code</th>
+                                <th class="p-2 border-r border-slate-300 font-bold">HSN Code</th>
                                 <th class="p-2 border-r border-slate-300 text-center">Qty (Unit)</th>
                                 <th class="p-2 border-r border-slate-300">Rate (₹)</th>
                                 <th class="p-2 border-r border-slate-300">GST %</th>
-                                <th class="p-2">Final Value (₹)</th>
+                                <th class="p-2 font-bold">Final Value (₹)</th>
                             </tr>
                         </thead>
                         <tbody id="pr-bill-items" class="divide-y divide-slate-200 text-slate-700">
@@ -1084,10 +1073,9 @@ function doGet(e) {
                     </div>
                 </div>
 
-                <!-- TEMPLATE 2: Thermal Receipt (80mm/3-inch) Layout -->
+                <!-- TEMPLATE 2: Thermal Receipt Layout -->
                 <div id="invoice-thermal-area" class="bg-white text-black p-4 font-mono text-[11px] w-[300px] border border-dashed border-slate-300 shadow-sm hidden flex-shrink-0">
                     <div class="text-center space-y-1">
-                        <!-- Custom Shop Logo (Thermal) -->
                         <div class="mb-2" id="th-shop-logo-container">
                             <img id="th-shop-logo" src="" alt="Logo" class="max-h-12 max-w-[80px] object-contain mx-auto">
                         </div>
@@ -1127,7 +1115,7 @@ function doGet(e) {
                         </div>
                         <div class="flex justify-between">
                             <span>CGST:</span>
-                            <span id="th-calc-cgst">₹0.00</span>
+                            <span id="th-calc-gst">₹0.00</span>
                         </div>
                         <div class="flex justify-between">
                             <span>SGST:</span>
@@ -1165,7 +1153,7 @@ function doGet(e) {
                 <p class="text-slate-500">● <i>"Billing" / "Inventory"</i> — Instant screen routing</p>
                 <p class="text-slate-500">● <i>"Reset"</i> — Clears current active cart</p>
             </div>
-            <button onclick="closeVoiceModal()" class="w-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-650 text-slate-700 dark:text-white font-semibold text-xs py-2 rounded-lg transition">
+            <button onclick="closeVoiceModal()" class="w-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-655 text-slate-700 dark:text-white font-semibold text-xs py-2 rounded-lg transition">
                 Deactivate Listening
             </button>
         </div>
@@ -1204,18 +1192,17 @@ function doGet(e) {
                     </div>
                     <div>
                         <label class="block font-bold text-slate-500 dark:text-slate-400 mb-1">Hardware Category *</label>
-                        <select id="prod-category" required class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-850 dark:text-white rounded-lg outline-none focus:border-indigo-500">
-                            <option value="Plumbing">Plumbing</option>
-                            <option value="Electrical">Electrical</option>
-                            <option value="Paints">Paints</option>
-                            <option value="Tools">Tools</option>
-                            <option value="Fasteners">Fasteners</option>
-                            <option value="Pipes">Pipes</option>
-                            <option value="Cement">Cement</option>
-                            <option value="Steel">Steel</option>
-                            <option value="Agricultural Hardware">Agricultural Hardware</option>
-                            <option value="Safety Equipment">Safety Equipment</option>
-                        </select>
+                        <div class="flex items-center space-x-1">
+                            <select id="prod-category" required class="flex-grow p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-850 dark:text-white rounded-lg outline-none focus:border-indigo-500">
+                                <!-- Dynamic options loaded on render -->
+                            </select>
+                            <button type="button" onclick="openAddCategoryModal()" class="w-10 h-10 flex items-center justify-center bg-indigo-50 dark:bg-indigo-950/40 hover:bg-indigo-100 dark:hover:bg-indigo-900 text-indigo-600 dark:text-indigo-400 border border-slate-200 dark:border-slate-600 rounded-lg" title="Add Nayi Category">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                            <button type="button" onclick="deleteActiveCategory()" class="w-10 h-10 flex items-center justify-center bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900 text-rose-500 border border-slate-200 dark:border-slate-600 rounded-lg" title="Delete Category">
+                                <i class="fa-solid fa-minus"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="grid grid-cols-3 gap-3">
@@ -1253,14 +1240,17 @@ function doGet(e) {
                     </div>
                     <div>
                         <label class="block font-bold text-slate-500 dark:text-slate-400 mb-1">Stock Unit</label>
-                        <select id="prod-unit" class="w-full p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-850 dark:text-white rounded-lg outline-none focus:border-indigo-500">
-                            <option value="Piece">Piece</option>
-                            <option value="Box">Box</option>
-                            <option value="Kg">Kg</option>
-                            <option value="Meter">Meter</option>
-                            <option value="Litre">Litre</option>
-                            <option value="Bag">Bag</option>
-                        </select>
+                        <div class="flex items-center space-x-1">
+                            <select id="prod-unit" class="flex-grow p-2.5 border border-slate-200 dark:border-slate-600 bg-transparent text-slate-850 dark:text-white rounded-lg outline-none focus:border-indigo-500">
+                                <!-- Dynamic options loaded on render -->
+                            </select>
+                            <button type="button" onclick="openAddUnitModal()" class="w-10 h-10 flex items-center justify-center bg-indigo-50 dark:bg-indigo-950/40 hover:bg-indigo-100 dark:hover:bg-indigo-900 text-indigo-600 dark:text-indigo-400 border border-slate-200 dark:border-slate-600 rounded-lg" title="Add Naya Unit">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                            <button type="button" onclick="deleteActiveUnit()" class="w-10 h-10 flex items-center justify-center bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900 text-rose-505 border border-slate-200 dark:border-slate-600 rounded-lg" title="Delete Unit">
+                                <i class="fa-solid fa-minus"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
@@ -1343,7 +1333,7 @@ function doGet(e) {
         </div>
     </div>
 
-    <!-- COLLECT PAYMENT MODAL (UDHAR REDUCTION) -->
+    <!-- COLLECT PAYMENT MODAL -->
     <div id="collect-payment-modal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white dark:bg-slate-800 rounded-xl shadow-2xl max-w-md w-full p-6 space-y-4">
             <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-700 pb-2">
@@ -1368,6 +1358,38 @@ function doGet(e) {
                     Apply Credit Update
                 </button>
             </form>
+        </div>
+    </div>
+
+    <!-- ADD CATEGORY POPUP MODAL -->
+    <div id="category-add-modal" class="fixed inset-0 bg-black/60 z-[60] flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-2xl max-w-sm w-full p-6 space-y-4">
+            <div class="flex justify-between items-center border-b border-slate-150 dark:border-slate-700 pb-2">
+                <h3 class="font-bold text-slate-805 dark:text-white text-xs uppercase tracking-wider">Nayi Category Add Karein</h3>
+                <button onclick="closeAddCategoryModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="space-y-3">
+                <input type="text" id="new-category-input" placeholder="Category Name (e.g. Sanitaryware)" class="w-full p-2.5 border border-slate-200 dark:border-slate-600 rounded-lg bg-transparent text-sm text-slate-800 dark:text-white outline-none focus:border-indigo-500">
+                <button onclick="saveNewCategory()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs py-2.5 rounded-lg transition shadow-md">
+                    Category Save Karein
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADD STOCK UNIT POPUP MODAL -->
+    <div id="unit-add-modal" class="fixed inset-0 bg-black/60 z-[60] flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-2xl max-w-sm w-full p-6 space-y-4">
+            <div class="flex justify-between items-center border-b border-slate-150 dark:border-slate-700 pb-2">
+                <h3 class="font-bold text-slate-805 dark:text-white text-xs uppercase tracking-wider">Naya Stock Unit Add Karein</h3>
+                <button onclick="closeAddUnitModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="space-y-3">
+                <input type="text" id="new-unit-input" placeholder="Unit Name (e.g. Set, Carton)" class="w-full p-2.5 border border-slate-200 dark:border-slate-600 rounded-lg bg-transparent text-sm text-slate-800 dark:text-white outline-none focus:border-indigo-500">
+                <button onclick="saveNewUnit()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs py-2.5 rounded-lg transition shadow-md">
+                    Unit Save Karein
+                </button>
+            </div>
         </div>
     </div>
 
@@ -1400,12 +1422,18 @@ function doGet(e) {
             { id: "3", name: "Walk-In Customer", phone: "-", gstin: "", address: "-", udhar: 0.00 }
         ];
 
+        // Default list structures for categories and units
+        const defaultCategories = ["Plumbing", "Electrical", "Paints", "Tools", "Fasteners", "Pipes", "Cement", "Steel", "Agricultural Hardware", "Safety Equipment"];
+        const defaultUnits = ["Piece", "Box", "Kg", "Meter", "Litre", "Bag"];
+
         // System state stores
         let db = {
             products: [],
             customers: [],
             suppliers: [],
             sales: [],
+            categories: [],
+            units: [],
             settings: {
                 shopName: "Dhisle Hardware and Traders",
                 address: "A/P Dhisle Hardware complex, National Highway Rd, Maharashtra, India",
@@ -1486,13 +1514,21 @@ function doGet(e) {
                     if(!db.settings.logo) db.settings.logo = "";
                     if(db.settings.cloudSyncEnabled === undefined) db.settings.cloudSyncEnabled = false;
                     if(!db.settings.cloudSyncUrl) db.settings.cloudSyncUrl = "";
+                    if(!db.categories || db.categories.length === 0) db.categories = [...defaultCategories];
+                    if(!db.units || db.units.length === 0) db.units = [...defaultUnits];
                 } else {
                     db.products = [...fallbackProducts];
                     db.customers = [...fallbackCustomers];
                     db.suppliers = [...fallbackSuppliers];
                     db.sales = [...fallbackSales];
+                    db.categories = [...defaultCategories];
+                    db.units = [...defaultUnits];
                     persistDB();
                 }
+
+                // Global dropdown loaders
+                renderCategoryDropdowns();
+                renderUnitDropdowns();
 
                 // Global logo references render call
                 renderGlobalLogos();
@@ -1519,6 +1555,104 @@ function doGet(e) {
             }
         }
 
+        // Dropdown HTML dynamic renderer functions
+        function renderCategoryDropdowns() {
+            const selectProdCat = document.getElementById("prod-category");
+            if (selectProdCat) {
+                selectProdCat.innerHTML = db.categories.map(cat => `<option value="${cat}">${cat}</option>`).join("");
+            }
+            const selectFilterCat = document.getElementById("inv-filter-category");
+            if (selectFilterCat) {
+                const currentVal = selectFilterCat.value;
+                selectFilterCat.innerHTML = `<option value="">All Categories</option>` + db.categories.map(cat => `<option value="${cat}">${cat}</option>`).join("");
+                selectFilterCat.value = currentVal;
+            }
+        }
+
+        function renderUnitDropdowns() {
+            const selectProdUnit = document.getElementById("prod-unit");
+            if (selectProdUnit) {
+                selectProdUnit.innerHTML = db.units.map(unit => `<option value="${unit}">${unit}</option>`).join("");
+            }
+        }
+
+        // Custom Category & Unit popups save / deletes functions
+        function openAddCategoryModal() {
+            document.getElementById("new-category-input").value = "";
+            document.getElementById("category-add-modal").classList.remove("hidden");
+        }
+        function closeAddCategoryModal() {
+            document.getElementById("category-add-modal").classList.add("hidden");
+        }
+        function saveNewCategory() {
+            const newCat = document.getElementById("new-category-input").value.trim();
+            if (!newCat) {
+                showToast("Sahi category ka naam daalein.", "warning");
+                return;
+            }
+            if (db.categories.includes(newCat)) {
+                showToast("Ye category pahle se moujood hai!", "warning");
+                return;
+            }
+            db.categories.push(newCat);
+            persistDB();
+            renderCategoryDropdowns();
+            document.getElementById("prod-category").value = newCat;
+            closeAddCategoryModal();
+            showToast(`Category "${newCat}" add ho gayi hai!`, "success");
+        }
+        function deleteActiveCategory() {
+            const activeCat = document.getElementById("prod-category").value;
+            if (!activeCat) {
+                showToast("Koyi category selected nahi hai.", "warning");
+                return;
+            }
+            showCustomConfirm(`Kya aap category "${activeCat}" ko delete karna chahte hain?`, function() {
+                db.categories = db.categories.filter(c => c !== activeCat);
+                persistDB();
+                renderCategoryDropdowns();
+                showToast(`Category "${activeCat}" delete kar di gayi.`, "success");
+            });
+        }
+
+        function openAddUnitModal() {
+            document.getElementById("new-unit-input").value = "";
+            document.getElementById("unit-add-modal").classList.remove("hidden");
+        }
+        function closeAddUnitModal() {
+            document.getElementById("unit-add-modal").classList.add("hidden");
+        }
+        function saveNewUnit() {
+            const newUnit = document.getElementById("new-unit-input").value.trim();
+            if (!newUnit) {
+                showToast("Sahi unit ka naam daalein.", "warning");
+                return;
+            }
+            if (db.units.includes(newUnit)) {
+                showToast("Ye unit pahle se moujood hai!", "warning");
+                return;
+            }
+            db.units.push(newUnit);
+            persistDB();
+            renderUnitDropdowns();
+            document.getElementById("prod-unit").value = newUnit;
+            closeAddUnitModal();
+            showToast(`Stock Unit "${newUnit}" add ho gaya hai!`, "success");
+        }
+        function deleteActiveUnit() {
+            const activeUnit = document.getElementById("prod-unit").value;
+            if (!activeUnit) {
+                showToast("Koyi stock unit selected nahi hai.", "warning");
+                return;
+            }
+            showCustomConfirm(`Kya aap unit "${activeUnit}" ko delete karna chahte hain?`, function() {
+                db.units = db.units.filter(u => u !== activeUnit);
+                persistDB();
+                renderUnitDropdowns();
+                showToast(`Unit "${activeUnit}" delete kar diya gaya.`, "success");
+            });
+        }
+
         // GOOGLE CLOUD DEVICE SYNCHRONIZATION MATRIX
         async function pushToCloud(manual = false) {
             const url = db.settings.cloudSyncUrl;
@@ -1532,7 +1666,7 @@ function doGet(e) {
             try {
                 const response = await fetch(url, {
                     method: "POST",
-                    mode: "no-cors", // Handles Apps Script redirection safe policies
+                    mode: "no-cors",
                     headers: {
                         "Content-Type": "application/json"
                     },
@@ -1562,7 +1696,6 @@ function doGet(e) {
                 
                 if (cloudData && (cloudData.products || cloudData.sales)) {
                     db = cloudData;
-                    // Double check sync flags stay intact
                     db.settings.cloudSyncUrl = url;
                     db.settings.cloudSyncEnabled = true;
 
@@ -1574,6 +1707,8 @@ function doGet(e) {
                     }
                     
                     // Automatically refresh current screen/tables UI on sync download
+                    renderCategoryDropdowns();
+                    renderUnitDropdowns();
                     renderGlobalLogos();
                     refreshCurrentView();
                 } else {
@@ -1586,7 +1721,7 @@ function doGet(e) {
             }
         }
 
-        // Background automatic pool cycle for seamless real-time syncing
+        // Background automatic pool cycle
         setInterval(() => {
             if (db.settings.cloudSyncUrl && db.settings.cloudSyncEnabled) {
                 pullFromCloud(false);
@@ -1699,9 +1834,8 @@ function doGet(e) {
             reader.onload = function(e) {
                 const img = new Image();
                 img.onload = function() {
-                    // Compress Image to prevent storage overflow
                     const canvas = document.createElement('canvas');
-                    const max_size = 180; // Limit size dimensions
+                    const max_size = 180;
                     let width = img.width;
                     let height = img.height;
 
@@ -1726,7 +1860,6 @@ function doGet(e) {
                     db.settings.logo = compressedBase64;
                     persistDB();
 
-                    // Update UI Previews
                     renderLogoInSettings();
                     renderGlobalLogos();
                     showToast("Shop logo successfully uploaded & optimized!", "success");
@@ -1769,7 +1902,6 @@ function doGet(e) {
                 }
             }
             
-            // Refresh data structures
             renderDashboard();
             if (activeView === "inventory") loadInventoryTable();
             else if (activeView === "customers") loadCustomerTable();
@@ -1795,7 +1927,6 @@ function doGet(e) {
             const activeNav = document.getElementById(`nav-${viewId}`);
             if (activeNav) activeNav.classList.add("bg-indigo-600", "text-white");
 
-            // MOBILE SIDEBAR AUTO-CLOSE MECHANISM
             const sidebar = document.getElementById("sidebar");
             if (sidebar && !sidebar.classList.contains("-translate-x-full")) {
                 sidebar.classList.add("-translate-x-full");
@@ -1903,7 +2034,7 @@ function doGet(e) {
         let billSelectedCustomer = null;
         let billPaymentMode = "cash";
 
-        // Analytics rendering helpers with safeguard boundaries
+        // Analytics rendering helpers
         let mainChartObj = null;
         let pieChartObj = null;
 
@@ -1923,7 +2054,6 @@ function doGet(e) {
             const totalProductsVal = db.products.length;
             const lowStockProductsCount = db.products.filter(p => p.stock <= p.threshold).length;
 
-            // UI Inject
             document.getElementById("stat-today-sales").innerText = `₹${todaySalesVal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}`;
             document.getElementById("stat-pending-udhar").innerText = `₹${pendingUdharVal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}`;
             document.getElementById("stat-udhar-count").innerText = `${pendingUdharCount} Outstanding Clients`;
@@ -2005,8 +2135,9 @@ function doGet(e) {
                         <td class="py-3">${s.date}</td>
                         <td class="py-3 font-semibold text-slate-950 dark:text-white">₹${s.total.toFixed(2)}</td>
                         <td class="py-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase ${s.paymentMode === 'cash' ? 'bg-emerald-100 text-emerald-800' : s.paymentMode === 'upi' ? 'bg-indigo-100 text-indigo-800' : 'bg-amber-100 text-amber-800'}">${s.paymentMode}</span></td>
-                        <td class="py-3 text-right">
+                        <td class="py-3 text-right space-x-2">
                             <button onclick="viewInvoiceDetails('${s.id}')" class="text-indigo-600 dark:text-indigo-400 hover:underline"><i class="fa-solid fa-eye"></i> View</button>
+                            <button onclick="deleteInvoice('${s.id}')" class="text-rose-500 hover:underline"><i class="fa-solid fa-trash"></i> Delete</button>
                         </td>
                     `;
                     recentBody.appendChild(tr);
@@ -2025,7 +2156,7 @@ function doGet(e) {
                     el.className = "flex items-center justify-between p-2 rounded-lg bg-rose-50 dark:bg-rose-950/20 border border-rose-100 dark:border-rose-900";
                     el.innerHTML = `
                         <div>
-                            <p class="font-bold text-slate-800 dark:text-slate-200 text-xs">${p.name}</p>
+                            <p class="font-bold text-slate-805 dark:text-slate-200 text-xs">${p.name}</p>
                             <p class="text-[10px] text-slate-500">${p.category} | Alert < ${p.threshold}</p>
                         </div>
                         <div class="text-right">
@@ -2056,7 +2187,7 @@ function doGet(e) {
                     row.onclick = () => addProductToBill(p.id);
                     row.innerHTML = `
                         <div>
-                            <p class="font-bold text-slate-800 dark:text-white">${p.name}</p>
+                            <p class="font-bold text-slate-805 dark:text-white">${p.name}</p>
                             <p class="text-[10px] text-slate-500">Brand: ${p.brand} | HSN: ${p.hsn} | GST: ${p.gst}%</p>
                         </div>
                         <div class="text-right">
@@ -2117,7 +2248,7 @@ function doGet(e) {
                     tr.className = "hover:bg-slate-50 dark:hover:bg-slate-750";
                     tr.innerHTML = `
                         <td class="p-3.5">
-                            <div class="font-bold text-slate-800 dark:text-white">${item.name}</div>
+                            <div class="font-bold text-slate-805 dark:text-white">${item.name}</div>
                         </td>
                         <td class="p-3.5 text-slate-500">${item.hsn || '-'}</td>
                         <td class="p-3.5 text-slate-500">${item.gst}%</td>
@@ -2125,13 +2256,13 @@ function doGet(e) {
                             <div class="flex items-center justify-center space-x-2">
                                 <button onclick="updateBillQty(${index}, -1)" class="w-6 h-6 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-650 text-slate-700 dark:text-white rounded flex items-center justify-center font-bold text-sm">-</button>
                                 <span class="font-bold w-8 text-center text-xs">${item.qty} ${item.unit}</span>
-                                <button onclick="updateBillQty(${index}, 1)" class="w-6 h-6 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-650 text-slate-700 dark:text-white rounded flex items-center justify-center font-bold text-sm">+</button>
+                                <button onclick="updateBillQty(${index}, 1)" class="w-6 h-6 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-655 text-slate-700 dark:text-white rounded flex items-center justify-center font-bold text-sm">+</button>
                             </div>
                         </td>
                         <td class="p-3.5">
                             <input type="number" step="0.01" value="${item.rate}" onchange="updateBillRate(${index}, this.value)" class="w-20 p-1 border border-slate-200 dark:border-slate-650 bg-transparent rounded text-xs text-center font-bold">
                         </td>
-                        <td class="p-3.5 font-bold text-slate-800 dark:text-white">₹${(item.qty * item.rate).toFixed(2)}</td>
+                        <td class="p-3.5 font-bold text-slate-850 dark:text-white">₹${(item.qty * item.rate).toFixed(2)}</td>
                         <td class="p-3.5 text-right">
                             <button onclick="removeBillItem(${index})" class="text-rose-500 hover:text-rose-600 p-1"><i class="fa-solid fa-trash-can"></i></button>
                         </td>
@@ -2207,7 +2338,6 @@ function doGet(e) {
             const grandTotalRounded = Math.round(afterDiscount);
             const roundoff = grandTotalRounded - afterDiscount;
 
-            // Update UI elements
             document.getElementById("bill-calc-taxable").innerText = `₹${totalTaxable.toFixed(2)}`;
             document.getElementById("bill-calc-cgst").innerText = `₹${totalCGST.toFixed(2)}`;
             document.getElementById("bill-calc-sgst").innerText = `₹${totalSGST.toFixed(2)}`;
@@ -2249,7 +2379,6 @@ function doGet(e) {
             document.getElementById("bill-customer-search").value = "";
             document.getElementById("bill-customer-results").classList.add("hidden");
 
-            // Populate Card Information Info block
             document.getElementById("bill-customer-active-card").classList.remove("hidden");
             document.getElementById("bill-cust-card-name").innerText = c.name;
             document.getElementById("bill-cust-card-phone").innerText = `Mobile: ${c.phone}`;
@@ -2295,7 +2424,7 @@ function doGet(e) {
             const container = document.getElementById("payment-extra-field");
             container.innerHTML = `
                 <div class="flex flex-col items-center justify-center p-3.5 bg-slate-50 dark:bg-slate-750 rounded-lg border border-slate-200 mt-2 space-y-2">
-                    <p class="font-bold text-slate-700 dark:text-slate-200 text-center text-[10px]">Merchant Dynamic UPI Payment QR Code</p>
+                    <p class="font-bold text-slate-705 dark:text-slate-200 text-center text-[10px]">Merchant Dynamic UPI Payment QR Code</p>
                     <div id="payment-qr" class="bg-white p-1.5 rounded"></div>
                     <p class="text-[9px] text-slate-400 font-medium">Auto-calculated value: ₹${amount}</p>
                 </div>
@@ -2371,6 +2500,40 @@ function doGet(e) {
             resetInvoicePOS();
         }
 
+        // DELETE INVOICE WITH STOCK REVERSION & UDHAR REFUND LOGIC
+        function deleteInvoice(id) {
+            showCustomConfirm(`Kya aap sach me Invoice ${id} ko delete karna chahte hain? Isse iska stock main inventory me wapas add ho jayega!`, function() {
+                const invoice = db.sales.find(s => s.id === id);
+                if (!invoice) {
+                    showToast("Invoice nahi mila.", "danger");
+                    return;
+                }
+
+                // 1. Stock wapas inventory mein add karein
+                invoice.items.forEach(item => {
+                    const p = db.products.find(prod => prod.id === item.id);
+                    if (p) {
+                        p.stock += item.qty; // Add qty back to inventory
+                    }
+                });
+
+                // 2. Agar Udhar Book transaction tha to customer ka balance kam karein
+                if (invoice.paymentMode === "credit" && invoice.customerId) {
+                    const c = db.customers.find(cust => cust.id === invoice.customerId);
+                    if (c) {
+                        c.udhar = Math.max(0, c.udhar - invoice.total);
+                    }
+                }
+
+                // 3. Invoice delete karein sales array se
+                db.sales = db.sales.filter(s => s.id !== id);
+                persistDB();
+
+                showToast(`Invoice ${id} delete ho gaya aur stock revert ho gaya!`, "success");
+                refreshCurrentView();
+            });
+        }
+
         function resetInvoicePOS() {
             activeBillItems = [];
             billSelectedCustomer = null;
@@ -2411,7 +2574,7 @@ function doGet(e) {
             if (!s) return;
             activeViewerInvoice = s;
 
-            // RENDER LOGOS IN PRINT PREVIEWS
+            // RENDER LOGOS IN PREVIEWS
             const prLogo = document.getElementById("pr-shop-logo");
             const thLogo = document.getElementById("th-shop-logo");
             const prLogoContainer = document.getElementById("pr-shop-logo-container");
@@ -2538,7 +2701,7 @@ function doGet(e) {
             });
 
             document.getElementById("th-calc-taxable").innerText = `₹${s.taxable.toFixed(2)}`;
-            document.getElementById("th-calc-cgst").innerText = `₹${s.cgst.toFixed(2)}`;
+            document.getElementById("th-calc-gst").innerText = `₹${s.cgst.toFixed(2)}`;
             document.getElementById("th-calc-sgst").innerText = `₹${s.sgst.toFixed(2)}`;
             document.getElementById("th-calc-grand").innerText = `₹${s.total.toFixed(0)}`;
 
@@ -2620,13 +2783,13 @@ function doGet(e) {
                 const tr = document.createElement("tr");
                 tr.className = "hover:bg-slate-50 dark:hover:bg-slate-750 text-xs";
                 tr.innerHTML = `
-                    <td class="p-4 font-bold text-slate-800 dark:text-white">${p.name}</td>
+                    <td class="p-4 font-bold text-slate-805 dark:text-white">${p.name}</td>
                     <td class="p-4 text-slate-500">${p.category}</td>
                     <td class="p-4 text-slate-500">${p.brand}</td>
                     <td class="p-4 text-slate-500">${p.hsn || '-'}</td>
                     <td class="p-4 text-slate-500">${p.gst}%</td>
                     <td class="p-4">₹${p.purchase.toFixed(2)}</td>
-                    <td class="p-4 font-semibold text-slate-800 dark:text-white">₹${p.selling.toFixed(2)}</td>
+                    <td class="p-4 font-semibold text-slate-805 dark:text-white">₹${p.selling.toFixed(2)}</td>
                     <td class="p-4 text-center font-bold ${p.stock <= p.threshold ? 'text-rose-500' : 'text-emerald-500'}">${p.stock}</td>
                     <td class="p-4 text-center text-slate-500">${p.unit}</td>
                     <td class="p-4 text-right space-x-2">
@@ -2642,6 +2805,11 @@ function doGet(e) {
             document.getElementById("product-form").reset();
             document.getElementById("prod-edit-id").value = "";
             document.getElementById("product-modal-title").innerText = "Add Product Particulars";
+            
+            // Reload categories and unit configurations dynamically
+            renderCategoryDropdowns();
+            renderUnitDropdowns();
+
             document.getElementById("product-modal").classList.remove("hidden");
         }
 
@@ -2698,6 +2866,10 @@ function doGet(e) {
             const p = db.products.find(item => item.id === id);
             if (!p) return;
 
+            // Make sure selections lists are dynamic
+            renderCategoryDropdowns();
+            renderUnitDropdowns();
+
             document.getElementById("prod-edit-id").value = p.id;
             document.getElementById("prod-name").value = p.name;
             document.getElementById("prod-category").value = p.category;
@@ -2724,7 +2896,6 @@ function doGet(e) {
             document.getElementById("confirm-modal").classList.remove("hidden");
         }
 
-        // Close Action Matrix Modal
         function closeConfirmModal(confirmed) {
             document.getElementById("confirm-modal").classList.add("hidden");
             if (confirmed && confirmCallback) {
@@ -2764,7 +2935,7 @@ function doGet(e) {
                 const tr = document.createElement("tr");
                 tr.className = "hover:bg-slate-50 dark:hover:bg-slate-750 text-xs";
                 tr.innerHTML = `
-                    <td class="p-4 font-bold text-slate-800 dark:text-white">${c.name}</td>
+                    <td class="p-4 font-bold text-slate-805 dark:text-white">${c.name}</td>
                     <td class="p-4 text-slate-500">${c.phone}</td>
                     <td class="p-4 text-slate-500">${c.gstin || '-'}</td>
                     <td class="p-4 text-slate-500">${c.address || '-'}</td>
@@ -2903,9 +3074,9 @@ function doGet(e) {
                 if (val && !s.name.toLowerCase().includes(val) && !s.phone.includes(val)) return;
 
                 const tr = document.createElement("tr");
-                tr.className = "hover:bg-slate-50 dark:hover:bg-slate-750 text-xs";
+                tr.className = "hover:bg-slate-50 dark:hover:bg-slate-755 text-xs";
                 tr.innerHTML = `
-                    <td class="p-4 font-bold text-slate-800 dark:text-white">${s.name}</td>
+                    <td class="p-4 font-bold text-slate-805 dark:text-white">${s.name}</td>
                     <td class="p-4 text-slate-500">${s.phone}</td>
                     <td class="p-4 text-slate-500">${s.gstin || '-'}</td>
                     <td class="p-4 font-bold text-slate-700">₹${s.outstanding.toFixed(2)}</td>
@@ -3000,7 +3171,6 @@ function doGet(e) {
                 filteredInvoices = db.sales.filter(s => s.date.startsWith(curMonth));
             }
 
-            // Sync dynamic timeline indicator text
             const timelineTxt = document.getElementById("rep-date-range");
             if (timelineTxt) {
                 timelineTxt.innerText = `Timeline: ${timeVal === "today" ? "Today" : timeVal === "weekly" ? "This Week" : timeVal === "monthly" ? "This Month" : "All Historical database"}`;
@@ -3024,16 +3194,17 @@ function doGet(e) {
                 periodProfitVal += profitOnThisBill;
 
                 const tr = document.createElement("tr");
-                tr.className = "hover:bg-slate-50 dark:hover:bg-slate-750 text-xs";
+                tr.className = "hover:bg-slate-50 dark:hover:bg-slate-755 text-xs";
                 tr.innerHTML = `
-                    <td class="p-4 font-bold text-slate-800 dark:text-white">${s.id}</td>
+                    <td class="p-4 font-bold text-slate-805 dark:text-white">${s.id}</td>
                     <td class="p-4 font-medium">${s.customerName}</td>
                     <td class="p-4 text-slate-500">₹${s.cgst.toFixed(2)} / ₹${s.sgst.toFixed(2)}</td>
                     <td class="p-4 font-bold text-slate-900 dark:text-white">₹${s.total.toFixed(2)}</td>
                     <td class="p-4 uppercase font-bold text-indigo-600">${s.paymentMode}</td>
                     <td class="p-4 text-slate-400">${s.date}</td>
-                    <td class="p-4 text-right">
-                        <button onclick="viewInvoiceDetails('${s.id}')" class="bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-white px-2 py-1 rounded">View / Print</button>
+                    <td class="p-4 text-right space-x-2">
+                        <button onclick="viewInvoiceDetails('${s.id}')" class="bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-white px-2 py-1 rounded">View</button>
+                        <button onclick="deleteInvoice('${s.id}')" class="bg-rose-100 hover:bg-rose-200 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 px-2 py-1 rounded">Delete</button>
                     </td>
                 `;
                 body.appendChild(tr);
@@ -3054,7 +3225,6 @@ function doGet(e) {
             document.getElementById("set-shop-bank").value = db.settings.bank;
             document.getElementById("set-cloud-url").value = db.settings.cloudSyncUrl || "";
 
-            // Render active Cloud Sync Toggle configuration
             const circle = document.getElementById("cloud-sync-toggle-circle");
             const btn = document.getElementById("btn-cloud-sync-toggle");
             if (db.settings.cloudSyncEnabled) {
@@ -3151,6 +3321,8 @@ function doGet(e) {
                         db = parsed;
                         persistDB();
                         showToast("System database restored successfully!", "success");
+                        renderCategoryDropdowns();
+                        renderUnitDropdowns();
                         renderDashboard();
                         renderGlobalLogos();
                     } else {
@@ -3199,7 +3371,7 @@ function doGet(e) {
             }
         }
 
-        // NATIVE SPEECH SPEECH RECOGNITION (VOICE COMMAND ASSISTANT)
+        // NATIVE SPEECH RECOGNITION (VOICE COMMAND ASSISTANT)
         let voiceRecognition = null;
 
         function triggerVoiceSearch() {
@@ -3271,7 +3443,6 @@ function doGet(e) {
             }
         }
 
-        // QUICK F2 SHORTCUT Key handler for Billing POS
         window.addEventListener("keydown", function(e) {
             if (e.key === "F2") {
                 e.preventDefault();
